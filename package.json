@@ -17,21 +17,23 @@
   "scripts": {
     "build": "bun run --filter '*' build",
     "test": "bun test",
-    "lint": "bunx --bun pickier run --mode lint",
-    "lint:fix": "bunx --bun pickier run --mode lint --fix",
-    "format": "bunx --bun pickier run --mode format --write",
-    "format:check": "bunx --bun pickier run --mode format --check",
+    "lint": "bunx --bun pickier lint . --config pickier.config.ts --max-warnings 9999",
+    "lint:fix": "bunx --bun pickier lint . --fix --config pickier.config.ts --max-warnings 9999",
+    "format": "bunx --bun pickier format . --config pickier.config.ts",
+    "format:fix": "bunx --bun pickier format . --write --config pickier.config.ts",
     "typecheck": "bun --bun tsc --noEmit",
     "fresh": "bunx rimraf node_modules/ bun.lock && bun i",
     "changelog": "bunx logsmith --verbose",
-    "release": "bun --bun run changelog && bunx --bun bumpx prompt --recursive"
+    "changelog:generate": "bunx logsmith --output CHANGELOG.md",
+    "release": "bun --bun run changelog:generate && bunx --bun bumpx prompt --recursive"
   },
   "git-hooks": {
     "pre-commit": {
       "staged-lint": {
-        "*.{js,ts,json,yaml,yml,md}": "bunx --bun pickier run --mode lint --fix"
+        "*.{js,ts,json,yaml,yml,md}": "bunx --bun pickier lint --fix"
       }
-    }
+    },
+    "commit-msg": "bunx gitlint --edit .git/COMMIT_EDITMSG"
   },
   "workspaces": [
     "packages/*"
@@ -39,8 +41,6 @@
   "devDependencies": {
     "@types/bun": "^1.3.9",
     "better-dx": "^0.2.6",
-    "bun-plugin-dtsx": "^0.9.9",
-    "pickier": "^0.1.20",
-    "typescript": "^5.8.3"
+    "bun-plugin-dtsx": "^0.9.9"
   }
 }
