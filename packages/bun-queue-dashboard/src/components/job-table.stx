@@ -4,37 +4,35 @@ const jobs = []
 
 <div>
   @if(jobs.length === 0)
-    <p class="text-slate-500 text-center py-12">No jobs to display.</p>
+    <div class="empty-state">No jobs to display.</div>
   @else
-    <div class="overflow-x-auto rounded-lg border border-slate-700">
-      <table class="w-full text-sm">
-        <thead>
-          <tr class="bg-slate-800 text-left">
-            <th class="px-4 py-3 text-xs uppercase tracking-wider text-slate-400 font-medium">ID</th>
-            <th class="px-4 py-3 text-xs uppercase tracking-wider text-slate-400 font-medium">Queue</th>
-            <th class="px-4 py-3 text-xs uppercase tracking-wider text-slate-400 font-medium">Name</th>
-            <th class="px-4 py-3 text-xs uppercase tracking-wider text-slate-400 font-medium">Status</th>
-            <th class="px-4 py-3 text-xs uppercase tracking-wider text-slate-400 font-medium">Attempts</th>
-            <th class="px-4 py-3 text-xs uppercase tracking-wider text-slate-400 font-medium">Created</th>
-            <th class="px-4 py-3 text-xs uppercase tracking-wider text-slate-400 font-medium">Duration</th>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Queue</th>
+          <th>Name</th>
+          <th>Status</th>
+          <th class="text-right">Attempts</th>
+          <th>Created</th>
+          <th class="text-right">Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach(jobs as job)
+          <tr>
+            <td class="mono" style="font-size: 0.75rem;">{{ job.id }}</td>
+            <td>{{ job.queue }}</td>
+            <td style="color: var(--text); font-weight: 500;">{{ job.name }}</td>
+            <td>
+              <span class="badge {{ job.status === 'completed' ? 'badge-success' : job.status === 'failed' ? 'badge-error' : job.status === 'active' ? 'badge-info' : job.status === 'waiting' ? 'badge-warning' : 'badge-muted' }}">{{ job.status }}</span>
+            </td>
+            <td class="text-right tabular-nums">{{ job.attempts }}/{{ job.maxAttempts }}</td>
+            <td style="font-size: 0.75rem;">{{ job.createdAt }}</td>
+            <td class="text-right mono tabular-nums" style="font-size: 0.75rem;">{{ job.duration ? job.duration + 'ms' : '—' }}</td>
           </tr>
-        </thead>
-        <tbody class="divide-y divide-slate-700">
-          @foreach(jobs as job)
-            <tr class="hover:bg-slate-800/50">
-              <td class="px-4 py-3 font-mono text-xs text-slate-300">{{ job.id }}</td>
-              <td class="px-4 py-3 text-slate-300">{{ job.queue }}</td>
-              <td class="px-4 py-3 text-slate-200 font-medium">{{ job.name }}</td>
-              <td class="px-4 py-3">
-                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium {{ job.status === 'completed' ? 'bg-emerald-500/10 text-emerald-400' : job.status === 'failed' ? 'bg-red-500/10 text-red-400' : job.status === 'active' ? 'bg-blue-500/10 text-blue-400' : job.status === 'waiting' ? 'bg-amber-500/10 text-amber-400' : 'bg-purple-500/10 text-purple-400' }}">{{ job.status }}</span>
-              </td>
-              <td class="px-4 py-3 text-slate-400">{{ job.attempts }}/{{ job.maxAttempts }}</td>
-              <td class="px-4 py-3 text-slate-400 text-xs">{{ job.createdAt }}</td>
-              <td class="px-4 py-3 text-slate-400 font-mono text-xs">{{ job.duration ? job.duration + 'ms' : '-' }}</td>
-            </tr>
-          @endforeach
-        </tbody>
-      </table>
-    </div>
+        @endforeach
+      </tbody>
+    </table>
   @endif
 </div>

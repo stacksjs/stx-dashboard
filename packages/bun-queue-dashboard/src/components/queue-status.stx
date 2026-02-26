@@ -9,19 +9,19 @@ const queue = {
 }
 </script>
 
-<div class="bg-slate-800 rounded-lg p-4 border border-slate-700">
-  <div class="flex items-center justify-between mb-3">
-    <h3 class="text-sm font-semibold text-slate-200">{{ queue.name }}</h3>
+<div class="stat-card" style="padding: 1.25rem;">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+    <span style="font-size: 0.875rem; font-weight: 600; color: var(--text);">{{ queue.name }}</span>
     @if(queue.paused)
-      <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-purple-500/10 text-purple-400">Paused</span>
+      <span class="badge badge-muted">Paused</span>
     @else
-      <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400">Active</span>
+      <span class="badge badge-success">Active</span>
     @endif
   </div>
-  <div class="grid grid-cols-2 gap-2 text-xs">
-    <span class="text-slate-400">Waiting: <span class="text-slate-200 font-medium">{{ queue.waiting }}</span></span>
-    <span class="text-slate-400">Active: <span class="text-blue-400 font-medium">{{ queue.active }}</span></span>
-    <span class="text-slate-400">Completed: <span class="text-emerald-400 font-medium">{{ queue.completed }}</span></span>
-    <span class="text-slate-400">Failed: <span class="text-red-400 font-medium">{{ queue.failed }}</span></span>
+  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
+    <div style="font-size: 0.75rem; color: var(--muted);">Waiting <span style="color: var(--text2); font-weight: 500;" class="tabular-nums">{{ queue.waiting }}</span></div>
+    <div style="font-size: 0.75rem; color: var(--muted);">Active <span style="color: var(--accent); font-weight: 500;" class="tabular-nums">{{ queue.active }}</span></div>
+    <div style="font-size: 0.75rem; color: var(--muted);">Completed <span style="color: var(--success); font-weight: 500;" class="tabular-nums">{{ queue.completed }}</span></div>
+    <div style="font-size: 0.75rem; color: var(--muted);">Failed <span style="color: var(--error); font-weight: 500;" class="tabular-nums">{{ queue.failed }}</span></div>
   </div>
 </div>
