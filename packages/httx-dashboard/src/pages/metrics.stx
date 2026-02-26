@@ -1,0 +1,72 @@
+<script>
+const title = 'Performance Metrics'
+const metrics = {
+  avgResponseTime: 0,
+  p50ResponseTime: 0,
+  p95ResponseTime: 0,
+  p99ResponseTime: 0,
+  requestsPerMinute: 0,
+  errorRate: 0,
+}
+const statusDistribution = {
+  '2xx': 0,
+  '3xx': 0,
+  '4xx': 0,
+  '5xx': 0,
+}
+</script>
+
+<div class="dashboard">
+  <header class="page-header">
+    <h1>{{ title }}</h1>
+    <a href="/" class="back-link">Back to Dashboard</a>
+  </header>
+
+  <h2 class="section-title">Response Times</h2>
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <h3>Average</h3>
+      <span class="metric-value">{{ metrics.avgResponseTime }}</span>
+      <span class="metric-unit">ms</span>
+    </div>
+    <div class="metric-card">
+      <h3>P50</h3>
+      <span class="metric-value">{{ metrics.p50ResponseTime }}</span>
+      <span class="metric-unit">ms</span>
+    </div>
+    <div class="metric-card">
+      <h3>P95</h3>
+      <span class="metric-value">{{ metrics.p95ResponseTime }}</span>
+      <span class="metric-unit">ms</span>
+    </div>
+    <div class="metric-card">
+      <h3>P99</h3>
+      <span class="metric-value">{{ metrics.p99ResponseTime }}</span>
+      <span class="metric-unit">ms</span>
+    </div>
+  </div>
+
+  <h2 class="section-title">Status Distribution</h2>
+  <div class="status-grid">
+    <div class="status-card success">
+      <span class="status-code">2xx</span>
+      <span class="status-count">{{ statusDistribution['2xx'] }}</span>
+    </div>
+    <div class="status-card redirect">
+      <span class="status-code">3xx</span>
+      <span class="status-count">{{ statusDistribution['3xx'] }}</span>
+    </div>
+    <div class="status-card client-error">
+      <span class="status-code">4xx</span>
+      <span class="status-count">{{ statusDistribution['4xx'] }}</span>
+    </div>
+    <div class="status-card server-error">
+      <span class="status-code">5xx</span>
+      <span class="status-count">{{ statusDistribution['5xx'] }}</span>
+    </div>
+  </div>
+
+  <div class="charts-placeholder">
+    <p>Charts and time-series visualizations will be rendered here.</p>
+  </div>
+</div>

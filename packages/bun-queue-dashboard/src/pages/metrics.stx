@@ -1,0 +1,43 @@
+<script>
+const title = 'Metrics & Analytics'
+const metrics = {
+  throughputPerMinute: 0,
+  avgLatency: 0,
+  errorRate: 0,
+  uptime: 0,
+}
+</script>
+
+<div class="dashboard">
+  <header class="page-header">
+    <h1>{{ title }}</h1>
+    <a href="/" class="back-link">Back to Dashboard</a>
+  </header>
+
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <h3>Throughput</h3>
+      <span class="metric-value">{{ metrics.throughputPerMinute }}</span>
+      <span class="metric-unit">jobs/min</span>
+    </div>
+    <div class="metric-card">
+      <h3>Avg Latency</h3>
+      <span class="metric-value">{{ metrics.avgLatency }}</span>
+      <span class="metric-unit">ms</span>
+    </div>
+    <div class="metric-card">
+      <h3>Error Rate</h3>
+      <span class="metric-value">{{ metrics.errorRate }}</span>
+      <span class="metric-unit">%</span>
+    </div>
+    <div class="metric-card">
+      <h3>Uptime</h3>
+      <span class="metric-value">{{ metrics.uptime }}</span>
+      <span class="metric-unit">seconds</span>
+    </div>
+  </div>
+
+  <div class="charts-placeholder">
+    <p>Charts and time-series visualizations will be rendered here.</p>
+  </div>
+</div>

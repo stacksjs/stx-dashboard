@@ -1,0 +1,40 @@
+<script>
+const title = 'httx Dashboard'
+const stats = {
+  totalRequests: 0,
+  avgResponseTime: 0,
+  errorRate: 0,
+  requestsPerMinute: 0,
+}
+</script>
+
+<div class="dashboard">
+  <header class="dashboard-header">
+    <h1>{{ title }}</h1>
+    <p class="subtitle">HTTP client monitoring & analytics</p>
+  </header>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span class="stat-label">Total Requests</span>
+      <span class="stat-value">{{ stats.totalRequests }}</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Avg Response Time</span>
+      <span class="stat-value">{{ stats.avgResponseTime }}ms</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Error Rate</span>
+      <span class="stat-value failed">{{ stats.errorRate }}%</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Requests/min</span>
+      <span class="stat-value">{{ stats.requestsPerMinute }}</span>
+    </div>
+  </div>
+
+  <nav class="dashboard-nav">
+    <a href="/requests">Requests</a>
+    <a href="/metrics">Metrics</a>
+  </nav>
+</div>

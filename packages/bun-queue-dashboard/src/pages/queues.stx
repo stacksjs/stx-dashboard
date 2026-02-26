@@ -1,0 +1,50 @@
+<script>
+const title = 'Queues'
+const queues = []
+</script>
+
+<div class="dashboard">
+  <header class="page-header">
+    <h1>{{ title }}</h1>
+    <a href="/" class="back-link">Back to Dashboard</a>
+  </header>
+
+  <div class="queues-list">
+    @if(queues.length === 0)
+      <p class="empty-state">No queues found. Start processing jobs to see queue metrics.</p>
+    @else
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Queue</th>
+            <th>Status</th>
+            <th>Waiting</th>
+            <th>Active</th>
+            <th>Completed</th>
+            <th>Failed</th>
+            <th>Throughput</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach(queues as queue)
+            <tr>
+              <td class="queue-name">{{ queue.name }}</td>
+              <td>
+                @if(queue.paused)
+                  <span class="badge paused">Paused</span>
+                @else
+                  <span class="badge active">Active</span>
+                @endif
+              </td>
+              <td>{{ queue.waiting }}</td>
+              <td>{{ queue.active }}</td>
+              <td>{{ queue.completed }}</td>
+              <td>{{ queue.failed }}</td>
+              <td>{{ queue.throughput }}/min</td>
+            </tr>
+          @endforeach
+        </tbody>
+      </table>
+    @endif
+  </div>
+</div>

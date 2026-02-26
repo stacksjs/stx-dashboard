@@ -1,0 +1,14 @@
+<script>
+const status = 200
+const text = ''
+</script>
+
+@if(status >= 200 && status < 300)
+  <span class="status-badge status-2xx">{{ text || status }}</span>
+@elseif(status >= 300 && status < 400)
+  <span class="status-badge status-3xx">{{ text || status }}</span>
+@elseif(status >= 400 && status < 500)
+  <span class="status-badge status-4xx">{{ text || status }}</span>
+@else
+  <span class="status-badge status-5xx">{{ text || status }}</span>
+@endif

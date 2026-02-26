@@ -1,0 +1,51 @@
+<script>
+const title = 'bun-queue Dashboard'
+const stats = {
+  totalQueues: 0,
+  totalJobs: 0,
+  activeJobs: 0,
+  completedJobs: 0,
+  failedJobs: 0,
+  throughputPerMinute: 0,
+}
+</script>
+
+<div class="dashboard">
+  <header class="dashboard-header">
+    <h1>{{ title }}</h1>
+    <p class="subtitle">Real-time job queue monitoring</p>
+  </header>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span class="stat-label">Total Queues</span>
+      <span class="stat-value">{{ stats.totalQueues }}</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Total Jobs</span>
+      <span class="stat-value">{{ stats.totalJobs }}</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Active</span>
+      <span class="stat-value active">{{ stats.activeJobs }}</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Completed</span>
+      <span class="stat-value completed">{{ stats.completedJobs }}</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Failed</span>
+      <span class="stat-value failed">{{ stats.failedJobs }}</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Throughput/min</span>
+      <span class="stat-value">{{ stats.throughputPerMinute }}</span>
+    </div>
+  </div>
+
+  <nav class="dashboard-nav">
+    <a href="/queues">Queues</a>
+    <a href="/jobs">Jobs</a>
+    <a href="/metrics">Metrics</a>
+  </nav>
+</div>

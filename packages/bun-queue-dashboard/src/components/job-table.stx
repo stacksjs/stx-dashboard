@@ -1,0 +1,38 @@
+<script>
+const jobs = []
+</script>
+
+<div class="job-table-wrapper">
+  @if(jobs.length === 0)
+    <p class="empty-state">No jobs to display.</p>
+  @else
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Queue</th>
+          <th>Name</th>
+          <th>Status</th>
+          <th>Attempts</th>
+          <th>Created</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach(jobs as job)
+          <tr>
+            <td class="job-id">{{ job.id }}</td>
+            <td>{{ job.queue }}</td>
+            <td>{{ job.name }}</td>
+            <td>
+              <span class="badge {{ job.status }}">{{ job.status }}</span>
+            </td>
+            <td>{{ job.attempts }}/{{ job.maxAttempts }}</td>
+            <td>{{ job.createdAt }}</td>
+            <td>{{ job.duration ? job.duration + 'ms' : '-' }}</td>
+          </tr>
+        @endforeach
+      </tbody>
+    </table>
+  @endif
+</div>

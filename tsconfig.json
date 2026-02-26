@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "target": "esnext",
+    "lib": ["esnext", "dom"],
+    "moduleDetection": "force",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "paths": {
+      "@stacksjs/bun-queue-dashboard": ["./packages/bun-queue-dashboard/src/index.ts"],
+      "@stacksjs/httx-dashboard": ["./packages/httx-dashboard/src/index.ts"]
+    },
+    "resolveJsonModule": true,
+    "types": ["bun"],
+    "allowImportingTsExtensions": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "declaration": true,
+    "declarationMap": true,
+    "noEmit": true,
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true
+  },
+  "include": ["**/*.ts", "**/*.d.ts"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/dist",
+    "**/dist/**",
+    "packages/*/dist",
+    "packages/*/dist/**",
+    "**/test/**/*"
+  ]
+}

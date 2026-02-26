@@ -1,0 +1,11 @@
+<script>
+const label = ''
+const value = 0
+const unit = ''
+const variant = ''
+</script>
+
+<div class="stat-card">
+  <span class="stat-label">{{ label }}</span>
+  <span class="stat-value {{ variant }}">{{ value }}{{ unit ? ' ' + unit : '' }}</span>
+</div>

@@ -1,0 +1,62 @@
+<script>
+const title = 'Jobs'
+const jobs = []
+const filters = {
+  queue: '',
+  status: 'all',
+}
+const statuses = ['all', 'waiting', 'active', 'completed', 'failed', 'delayed']
+</script>
+
+<div class="dashboard">
+  <header class="page-header">
+    <h1>{{ title }}</h1>
+    <a href="/" class="back-link">Back to Dashboard</a>
+  </header>
+
+  <div class="filters">
+    <label>
+      Status:
+      <select id="status-filter">
+        @foreach(statuses as status)
+          <option value="{{ status }}">{{ status }}</option>
+        @endforeach
+      </select>
+    </label>
+  </div>
+
+  <div class="jobs-list">
+    @if(jobs.length === 0)
+      <p class="empty-state">No jobs found matching the current filters.</p>
+    @else
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Queue</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Attempts</th>
+            <th>Created</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach(jobs as job)
+            <tr>
+              <td class="job-id">{{ job.id }}</td>
+              <td>{{ job.queue }}</td>
+              <td>{{ job.name }}</td>
+              <td>
+                <span class="badge {{ job.status }}">{{ job.status }}</span>
+              </td>
+              <td>{{ job.attempts }}/{{ job.maxAttempts }}</td>
+              <td>{{ job.createdAt }}</td>
+              <td>{{ job.duration ? job.duration + 'ms' : '-' }}</td>
+            </tr>
+          @endforeach
+        </tbody>
+      </table>
+    @endif
+  </div>
+</div>

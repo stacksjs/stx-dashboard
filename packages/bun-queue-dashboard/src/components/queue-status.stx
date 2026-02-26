@@ -1,0 +1,27 @@
+<script>
+const queue = {
+  name: '',
+  paused: false,
+  waiting: 0,
+  active: 0,
+  completed: 0,
+  failed: 0,
+}
+</script>
+
+<div class="queue-status">
+  <div class="queue-header">
+    <h3>{{ queue.name }}</h3>
+    @if(queue.paused)
+      <span class="badge paused">Paused</span>
+    @else
+      <span class="badge active">Active</span>
+    @endif
+  </div>
+  <div class="queue-counts">
+    <span>Waiting: {{ queue.waiting }}</span>
+    <span>Active: {{ queue.active }}</span>
+    <span>Completed: {{ queue.completed }}</span>
+    <span>Failed: {{ queue.failed }}</span>
+  </div>
+</div>
