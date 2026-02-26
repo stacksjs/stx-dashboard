@@ -3,44 +3,46 @@ const title = 'Request History'
 const requests = []
 </script>
 
-<div class="dashboard">
-  <header class="page-header">
-    <h1>{{ title }}</h1>
-    <a href="/" class="back-link">Back to Dashboard</a>
+<div class="max-w-7xl mx-auto px-6 py-8">
+  <header class="flex items-center justify-between mb-8">
+    <h1 class="text-2xl font-bold text-slate-100">{{ title }}</h1>
+    <a href="/" class="text-sm text-blue-400 hover:text-blue-300 transition-colors">Back to Dashboard</a>
   </header>
 
-  <div class="requests-list">
+  <div>
     @if(requests.length === 0)
-      <p class="empty-state">No requests recorded yet. Start making HTTP requests with httx to see them here.</p>
+      <p class="text-slate-500 text-center py-12">No requests recorded yet. Start making HTTP requests with httx to see them here.</p>
     @else
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Method</th>
-            <th>URL</th>
-            <th>Status</th>
-            <th>Duration</th>
-            <th>Size</th>
-            <th>Time</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach(requests as req)
-            <tr>
-              <td>
-                <span class="method-badge {{ req.method.toLowerCase() }}">{{ req.method }}</span>
-              </td>
-              <td class="url-cell">{{ req.url }}</td>
-              <td>
-                <span class="status-badge status-{{ Math.floor(req.status / 100) }}xx">{{ req.status }}</span>
-              </td>
-              <td>{{ req.duration }}ms</td>
-              <td>{{ req.responseSize }}B</td>
-              <td>{{ req.timestamp }}</td>
+      <div class="overflow-x-auto rounded-lg border border-slate-700">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-slate-800 text-left">
+              <th class="px-4 py-3 text-xs uppercase tracking-wider text-slate-400 font-medium">Method</th>
+              <th class="px-4 py-3 text-xs uppercase tracking-wider text-slate-400 font-medium">URL</th>
+              <th class="px-4 py-3 text-xs uppercase tracking-wider text-slate-400 font-medium">Status</th>
+              <th class="px-4 py-3 text-xs uppercase tracking-wider text-slate-400 font-medium">Duration</th>
+              <th class="px-4 py-3 text-xs uppercase tracking-wider text-slate-400 font-medium">Size</th>
+              <th class="px-4 py-3 text-xs uppercase tracking-wider text-slate-400 font-medium">Time</th>
             </tr>
-          @endforeach
-        </tbody>
-      </table>
+          </thead>
+          <tbody class="divide-y divide-slate-700">
+            @foreach(requests as req)
+              <tr class="hover:bg-slate-800/50">
+                <td class="px-4 py-3">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold {{ req.method === 'GET' ? 'bg-emerald-500/10 text-emerald-400' : req.method === 'POST' ? 'bg-blue-500/10 text-blue-400' : req.method === 'PUT' || req.method === 'PATCH' ? 'bg-amber-500/10 text-amber-400' : req.method === 'DELETE' ? 'bg-red-500/10 text-red-400' : 'bg-slate-500/10 text-slate-400' }}">{{ req.method }}</span>
+                </td>
+                <td class="px-4 py-3 text-slate-300 max-w-xs truncate font-mono text-xs">{{ req.url }}</td>
+                <td class="px-4 py-3">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium {{ req.status < 300 ? 'bg-emerald-500/10 text-emerald-400' : req.status < 400 ? 'bg-blue-500/10 text-blue-400' : req.status < 500 ? 'bg-amber-500/10 text-amber-400' : 'bg-red-500/10 text-red-400' }}">{{ req.status }}</span>
+                </td>
+                <td class="px-4 py-3 text-slate-400 font-mono text-xs">{{ req.duration }}ms</td>
+                <td class="px-4 py-3 text-slate-400 text-xs">{{ req.responseSize }}B</td>
+                <td class="px-4 py-3 text-slate-400 text-xs">{{ req.timestamp }}</td>
+              </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
     @endif
   </div>
 </div>

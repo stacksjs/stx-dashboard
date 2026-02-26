@@ -3,48 +3,50 @@ const title = 'Queues'
 const queues = []
 </script>
 
-<div class="dashboard">
-  <header class="page-header">
-    <h1>{{ title }}</h1>
-    <a href="/" class="back-link">Back to Dashboard</a>
+<div class="max-w-7xl mx-auto px-6 py-8">
+  <header class="flex items-center justify-between mb-8">
+    <h1 class="text-2xl font-bold text-slate-100">{{ title }}</h1>
+    <a href="/" class="text-sm text-blue-400 hover:text-blue-300 transition-colors">Back to Dashboard</a>
   </header>
 
-  <div class="queues-list">
+  <div>
     @if(queues.length === 0)
-      <p class="empty-state">No queues found. Start processing jobs to see queue metrics.</p>
+      <p class="text-slate-500 text-center py-12">No queues found. Start processing jobs to see queue metrics.</p>
     @else
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Queue</th>
-            <th>Status</th>
-            <th>Waiting</th>
-            <th>Active</th>
-            <th>Completed</th>
-            <th>Failed</th>
-            <th>Throughput</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach(queues as queue)
-            <tr>
-              <td class="queue-name">{{ queue.name }}</td>
-              <td>
-                @if(queue.paused)
-                  <span class="badge paused">Paused</span>
-                @else
-                  <span class="badge active">Active</span>
-                @endif
-              </td>
-              <td>{{ queue.waiting }}</td>
-              <td>{{ queue.active }}</td>
-              <td>{{ queue.completed }}</td>
-              <td>{{ queue.failed }}</td>
-              <td>{{ queue.throughput }}/min</td>
+      <div class="overflow-x-auto rounded-lg border border-slate-700">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-slate-800 text-left">
+              <th class="px-4 py-3 text-xs uppercase tracking-wider text-slate-400 font-medium">Queue</th>
+              <th class="px-4 py-3 text-xs uppercase tracking-wider text-slate-400 font-medium">Status</th>
+              <th class="px-4 py-3 text-xs uppercase tracking-wider text-slate-400 font-medium">Waiting</th>
+              <th class="px-4 py-3 text-xs uppercase tracking-wider text-slate-400 font-medium">Active</th>
+              <th class="px-4 py-3 text-xs uppercase tracking-wider text-slate-400 font-medium">Completed</th>
+              <th class="px-4 py-3 text-xs uppercase tracking-wider text-slate-400 font-medium">Failed</th>
+              <th class="px-4 py-3 text-xs uppercase tracking-wider text-slate-400 font-medium">Throughput</th>
             </tr>
-          @endforeach
-        </tbody>
-      </table>
+          </thead>
+          <tbody class="divide-y divide-slate-700">
+            @foreach(queues as queue)
+              <tr class="hover:bg-slate-800/50">
+                <td class="px-4 py-3 text-slate-200 font-medium">{{ queue.name }}</td>
+                <td class="px-4 py-3">
+                  @if(queue.paused)
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-purple-500/10 text-purple-400">Paused</span>
+                  @else
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400">Active</span>
+                  @endif
+                </td>
+                <td class="px-4 py-3 text-slate-300">{{ queue.waiting }}</td>
+                <td class="px-4 py-3 text-slate-300">{{ queue.active }}</td>
+                <td class="px-4 py-3 text-slate-300">{{ queue.completed }}</td>
+                <td class="px-4 py-3 text-slate-300">{{ queue.failed }}</td>
+                <td class="px-4 py-3 text-slate-300">{{ queue.throughput }}/min</td>
+              </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
     @endif
   </div>
 </div>

@@ -9,19 +9,19 @@ const queue = {
 }
 </script>
 
-<div class="queue-status">
-  <div class="queue-header">
-    <h3>{{ queue.name }}</h3>
+<div class="bg-slate-800 rounded-lg p-4 border border-slate-700">
+  <div class="flex items-center justify-between mb-3">
+    <h3 class="text-sm font-semibold text-slate-200">{{ queue.name }}</h3>
     @if(queue.paused)
-      <span class="badge paused">Paused</span>
+      <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-purple-500/10 text-purple-400">Paused</span>
     @else
-      <span class="badge active">Active</span>
+      <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400">Active</span>
     @endif
   </div>
-  <div class="queue-counts">
-    <span>Waiting: {{ queue.waiting }}</span>
-    <span>Active: {{ queue.active }}</span>
-    <span>Completed: {{ queue.completed }}</span>
-    <span>Failed: {{ queue.failed }}</span>
+  <div class="grid grid-cols-2 gap-2 text-xs">
+    <span class="text-slate-400">Waiting: <span class="text-slate-200 font-medium">{{ queue.waiting }}</span></span>
+    <span class="text-slate-400">Active: <span class="text-blue-400 font-medium">{{ queue.active }}</span></span>
+    <span class="text-slate-400">Completed: <span class="text-emerald-400 font-medium">{{ queue.completed }}</span></span>
+    <span class="text-slate-400">Failed: <span class="text-red-400 font-medium">{{ queue.failed }}</span></span>
   </div>
 </div>

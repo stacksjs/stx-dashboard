@@ -8,33 +8,33 @@ const stats = {
 }
 </script>
 
-<div class="dashboard">
-  <header class="dashboard-header">
-    <h1>{{ title }}</h1>
-    <p class="subtitle">HTTP client monitoring & analytics</p>
+<div class="max-w-7xl mx-auto px-6 py-8">
+  <header class="mb-8">
+    <h1 class="text-2xl font-bold text-slate-100">{{ title }}</h1>
+    <p class="text-slate-400 mt-1">HTTP client monitoring & analytics</p>
   </header>
 
-  <div class="stats-grid">
-    <div class="stat-card">
-      <span class="stat-label">Total Requests</span>
-      <span class="stat-value">{{ stats.totalRequests }}</span>
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+    <div class="bg-slate-800 rounded-lg p-5 border border-slate-700">
+      <span class="block text-xs text-slate-400 uppercase tracking-wider font-medium">Total Requests</span>
+      <span class="block text-2xl font-bold mt-2 text-slate-100">{{ stats.totalRequests }}</span>
     </div>
-    <div class="stat-card">
-      <span class="stat-label">Avg Response Time</span>
-      <span class="stat-value">{{ stats.avgResponseTime }}ms</span>
+    <div class="bg-slate-800 rounded-lg p-5 border border-slate-700">
+      <span class="block text-xs text-slate-400 uppercase tracking-wider font-medium">Avg Response Time</span>
+      <span class="block text-2xl font-bold mt-2 text-slate-100">{{ stats.avgResponseTime }}<span class="text-sm text-slate-400 ml-1">ms</span></span>
     </div>
-    <div class="stat-card">
-      <span class="stat-label">Error Rate</span>
-      <span class="stat-value failed">{{ stats.errorRate }}%</span>
+    <div class="bg-slate-800 rounded-lg p-5 border border-slate-700">
+      <span class="block text-xs text-slate-400 uppercase tracking-wider font-medium">Error Rate</span>
+      <span class="block text-2xl font-bold mt-2 text-red-400">{{ stats.errorRate }}<span class="text-sm text-slate-400 ml-1">%</span></span>
     </div>
-    <div class="stat-card">
-      <span class="stat-label">Requests/min</span>
-      <span class="stat-value">{{ stats.requestsPerMinute }}</span>
+    <div class="bg-slate-800 rounded-lg p-5 border border-slate-700">
+      <span class="block text-xs text-slate-400 uppercase tracking-wider font-medium">Requests/min</span>
+      <span class="block text-2xl font-bold mt-2 text-slate-100">{{ stats.requestsPerMinute }}</span>
     </div>
   </div>
 
-  <nav class="dashboard-nav">
-    <a href="/requests">Requests</a>
-    <a href="/metrics">Metrics</a>
+  <nav class="flex gap-3">
+    <a href="/requests" class="px-4 py-2 bg-slate-800 text-blue-400 rounded-lg text-sm font-medium hover:bg-slate-700 border border-slate-700 transition-colors">Requests</a>
+    <a href="/metrics" class="px-4 py-2 bg-slate-800 text-blue-400 rounded-lg text-sm font-medium hover:bg-slate-700 border border-slate-700 transition-colors">Metrics</a>
   </nav>
 </div>

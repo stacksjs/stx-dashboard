@@ -4,7 +4,7 @@ const value = 0
 const variant = ''
 </script>
 
-<div class="stat-card">
-  <span class="stat-label">{{ label }}</span>
-  <span class="stat-value {{ variant }}">{{ value }}</span>
+<div class="bg-slate-800 rounded-lg p-5 border border-slate-700">
+  <span class="block text-xs text-slate-400 uppercase tracking-wider font-medium">{{ label }}</span>
+  <span class="block text-2xl font-bold mt-2 {{ variant === 'active' ? 'text-blue-400' : variant === 'completed' ? 'text-emerald-400' : variant === 'failed' ? 'text-red-400' : 'text-slate-100' }}">{{ value }}</span>
 </div>

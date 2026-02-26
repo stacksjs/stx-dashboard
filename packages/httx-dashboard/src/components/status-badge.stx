@@ -4,11 +4,11 @@ const text = ''
 </script>
 
 @if(status >= 200 && status < 300)
-  <span class="status-badge status-2xx">{{ text || status }}</span>
+  <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400">{{ text || status }}</span>
 @elseif(status >= 300 && status < 400)
-  <span class="status-badge status-3xx">{{ text || status }}</span>
+  <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-500/10 text-blue-400">{{ text || status }}</span>
 @elseif(status >= 400 && status < 500)
-  <span class="status-badge status-4xx">{{ text || status }}</span>
+  <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-amber-500/10 text-amber-400">{{ text || status }}</span>
 @else
-  <span class="status-badge status-5xx">{{ text || status }}</span>
+  <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-red-500/10 text-red-400">{{ text || status }}</span>
 @endif

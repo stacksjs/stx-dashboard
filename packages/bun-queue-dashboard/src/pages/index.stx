@@ -10,42 +10,42 @@ const stats = {
 }
 </script>
 
-<div class="dashboard">
-  <header class="dashboard-header">
-    <h1>{{ title }}</h1>
-    <p class="subtitle">Real-time job queue monitoring</p>
+<div class="max-w-7xl mx-auto px-6 py-8">
+  <header class="mb-8">
+    <h1 class="text-2xl font-bold text-slate-100">{{ title }}</h1>
+    <p class="text-slate-400 mt-1">Real-time job queue monitoring</p>
   </header>
 
-  <div class="stats-grid">
-    <div class="stat-card">
-      <span class="stat-label">Total Queues</span>
-      <span class="stat-value">{{ stats.totalQueues }}</span>
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+    <div class="bg-slate-800 rounded-lg p-5 border border-slate-700">
+      <span class="block text-xs text-slate-400 uppercase tracking-wider font-medium">Total Queues</span>
+      <span class="block text-2xl font-bold mt-2 text-slate-100">{{ stats.totalQueues }}</span>
     </div>
-    <div class="stat-card">
-      <span class="stat-label">Total Jobs</span>
-      <span class="stat-value">{{ stats.totalJobs }}</span>
+    <div class="bg-slate-800 rounded-lg p-5 border border-slate-700">
+      <span class="block text-xs text-slate-400 uppercase tracking-wider font-medium">Total Jobs</span>
+      <span class="block text-2xl font-bold mt-2 text-slate-100">{{ stats.totalJobs }}</span>
     </div>
-    <div class="stat-card">
-      <span class="stat-label">Active</span>
-      <span class="stat-value active">{{ stats.activeJobs }}</span>
+    <div class="bg-slate-800 rounded-lg p-5 border border-slate-700">
+      <span class="block text-xs text-slate-400 uppercase tracking-wider font-medium">Active</span>
+      <span class="block text-2xl font-bold mt-2 text-blue-400">{{ stats.activeJobs }}</span>
     </div>
-    <div class="stat-card">
-      <span class="stat-label">Completed</span>
-      <span class="stat-value completed">{{ stats.completedJobs }}</span>
+    <div class="bg-slate-800 rounded-lg p-5 border border-slate-700">
+      <span class="block text-xs text-slate-400 uppercase tracking-wider font-medium">Completed</span>
+      <span class="block text-2xl font-bold mt-2 text-emerald-400">{{ stats.completedJobs }}</span>
     </div>
-    <div class="stat-card">
-      <span class="stat-label">Failed</span>
-      <span class="stat-value failed">{{ stats.failedJobs }}</span>
+    <div class="bg-slate-800 rounded-lg p-5 border border-slate-700">
+      <span class="block text-xs text-slate-400 uppercase tracking-wider font-medium">Failed</span>
+      <span class="block text-2xl font-bold mt-2 text-red-400">{{ stats.failedJobs }}</span>
     </div>
-    <div class="stat-card">
-      <span class="stat-label">Throughput/min</span>
-      <span class="stat-value">{{ stats.throughputPerMinute }}</span>
+    <div class="bg-slate-800 rounded-lg p-5 border border-slate-700">
+      <span class="block text-xs text-slate-400 uppercase tracking-wider font-medium">Throughput/min</span>
+      <span class="block text-2xl font-bold mt-2 text-slate-100">{{ stats.throughputPerMinute }}</span>
     </div>
   </div>
 
-  <nav class="dashboard-nav">
-    <a href="/queues">Queues</a>
-    <a href="/jobs">Jobs</a>
-    <a href="/metrics">Metrics</a>
+  <nav class="flex gap-3">
+    <a href="/queues" class="px-4 py-2 bg-slate-800 text-blue-400 rounded-lg text-sm font-medium hover:bg-slate-700 border border-slate-700 transition-colors">Queues</a>
+    <a href="/jobs" class="px-4 py-2 bg-slate-800 text-blue-400 rounded-lg text-sm font-medium hover:bg-slate-700 border border-slate-700 transition-colors">Jobs</a>
+    <a href="/metrics" class="px-4 py-2 bg-slate-800 text-blue-400 rounded-lg text-sm font-medium hover:bg-slate-700 border border-slate-700 transition-colors">Metrics</a>
   </nav>
 </div>
