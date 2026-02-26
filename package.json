@@ -16,6 +16,9 @@
   },
   "scripts": {
     "build": "bun run --filter '*' build",
+    "dev": "bun run --filter '@stacksjs/bun-queue-dashboard' dev",
+    "dev:queue": "bun run --filter '@stacksjs/bun-queue-dashboard' dev",
+    "dev:httx": "bun run --filter '@stacksjs/httx-dashboard' dev",
     "test": "bun test",
     "lint": "bunx --bun pickier lint . --config pickier.config.ts --max-warnings 9999",
     "lint:fix": "bunx --bun pickier lint . --fix --config pickier.config.ts --max-warnings 9999",
